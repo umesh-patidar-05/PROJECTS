@@ -1,0 +1,2 @@
+print("JAI SHREE GHANESH")
+print("JAI SHREE HANUMAN")
