@@ -1,2 +1,0 @@
-print("JAI SHREE GANESH")
-print("JAI SHREE HANUMAN")
