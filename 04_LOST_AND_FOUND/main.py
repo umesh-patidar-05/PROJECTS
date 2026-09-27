@@ -421,13 +421,12 @@ while True:
                                 res = []
                                 for n, item in enumerate(items):
 
-                                    match = MatchingService()
-                                    found = match.matching_found_items(item[2], item[4])
+                                    found = match_service.matching_found_items(item[2], item[4])
                                     if found is not None:
                                         l = [item[0], found[0][5]]
                                         res.append(l)
                                         print()
-                                        print("Found: ",n+1)
+                                        print("Found: ",len(res))
                                         print("Item Name: ", item[2]) 
                                         print()
 
@@ -451,7 +450,7 @@ while True:
                                             print("incorrect match")
                                             print()             
                                 else:
-                                    ("You have no matched items to claim.")                              
+                                    print("You have no matched items to claim.")                              
                                 
                             else:
                                 print("You have no matched items to claim.")

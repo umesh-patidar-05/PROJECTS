@@ -34,7 +34,7 @@ class MatchingDao:
         db = DataBase()
         conn = db.connect()
         cursor = conn.cursor()
-        query = "SELECT * FROM lost WHERE student_id = %s"
+        query = "SELECT * FROM lost WHERE student_id = %s AND status_id = 2"
         cursor.execute(query, (stu_id,))
         items = cursor.fetchall()
         return items
