@@ -351,3 +351,71 @@ mysql> SELECT * FROM lost;
 |     412 |        109 | Black Pen Drive       | 2026-09-20 | Computer Lab  |         1 |
 +---------+------------+-----------------------+------------+---------------+-----------+
 12 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+found se pending remove
+
+
+mysql> SELECT * FROM found;
++----------+------------+-----------------------+------------+--------------+-----------+
+| found_id | student_id | found_item_name       | found_date | address      | status_id |
++----------+------------+-----------------------+------------+--------------+-----------+
+|      201 |        102 | Black Wallet          | 2026-09-10 | Library      |         2 |
+|      202 |        105 | Blue Water Bottle     | 2026-09-11 | Canteen      |         3 |
+|      203 |        108 | HP Laptop Charger     | 2026-09-12 | Computer Lab |         2 |
+|      204 |        110 | Black Backpack        | 2026-09-13 | Parking Area |         3 |
+|      205 |        103 | Silver Watch          | 2026-09-14 | Seminar Hall |         1 |
+|      206 |        107 | Red Umbrella          | 2026-09-15 | Main Gate    |         2 |
+|      207 |        112 | Scientific Calculator | 2026-09-16 | Room 204     |         1 |
+|      208 |        114 | Blue Notebook         | 2026-09-17 | Library      |         2 |
+|      209 |        109 | Wireless Earbuds      | 2026-09-18 | Canteen      |         1 |
+|      210 |        115 | USB Drive             | 2026-09-19 | Computer Lab |         2 |
++----------+------------+-----------------------+------------+--------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM found
+    -> WHERE status_id = (
+    ->     SELECT status_id
+    ->     FROM status
+    ->     WHERE status_name = 'Pending'
+    -> );
++----------+------------+-----------------------+------------+--------------+-----------+
+| found_id | student_id | found_item_name       | found_date | address      | status_id |
++----------+------------+-----------------------+------------+--------------+-----------+
+|      205 |        103 | Silver Watch          | 2026-09-14 | Seminar Hall |         1 |
+|      207 |        112 | Scientific Calculator | 2026-09-16 | Room 204     |         1 |
+|      209 |        109 | Wireless Earbuds      | 2026-09-18 | Canteen      |         1 |
++----------+------------+-----------------------+------------+--------------+-----------+
+3 rows in set (0.01 sec)
+
+
+
+mysql> DELETE FROM found
+    -> WHERE status_id = (
+    ->     SELECT status_id
+    ->     FROM status
+    ->     WHERE status_name = 'Pending'
+    -> );
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> SELECT *
+    -> FROM found
+    -> WHERE status_id = (
+    ->     SELECT status_id
+    ->     FROM status
+    ->     WHERE status_name = 'Pending'
+    -> );
+Empty set (0.00 sec)
+
+mysql>
